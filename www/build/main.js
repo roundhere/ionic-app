@@ -470,11 +470,14 @@ var SearchComponent = (function () {
         console.log('Hello SearchComponent Component');
         this.text = 'im ur search component';
     }
+    SearchComponent.prototype.onKey = function () {
+        console.log("keyup march");
+    };
     return SearchComponent;
 }());
 SearchComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'search',template:/*ion-inline-start:"/Users/aai/Documents/Uwerk/MyGitHub/ionic-app/src/components/search/search.html"*/'<!-- Generated template for the SearchComponent component -->\n\n<ion-item class="ionInput">\n  <ion-label stacked >{{text}}</ion-label>\n  <ion-input type="text" (keyup)="onKey($event)"></ion-input>\n</ion-item>\n'/*ion-inline-end:"/Users/aai/Documents/Uwerk/MyGitHub/ionic-app/src/components/search/search.html"*/
+        selector: 'search',template:/*ion-inline-start:"/Users/aai/Documents/Uwerk/MyGitHub/ionic-app/src/components/search/search.html"*/'<!-- Generated template for the SearchComponent component -->\n\n<ion-item class="ionInput">\n  <ion-label stacked >{{text}}</ion-label>\n  <ion-input type="text" [value] = "query" (keydown.enter) = "submit(newQuery.value )"></ion-input>\n</ion-item>\n'/*ion-inline-end:"/Users/aai/Documents/Uwerk/MyGitHub/ionic-app/src/components/search/search.html"*/
     }),
     __metadata("design:paramtypes", [])
 ], SearchComponent);
@@ -555,22 +558,13 @@ var SpotifyServiceProvider = (function () {
         this.http = http;
         console.log('Hello SpotifyServiceProvider Provider');
     }
-    SpotifyServiceProvider.prototype.searchByTrack = function (query) {
-        var params = [
-            "q=" + query,
-            "type=track"
-        ].join("&");
-        var queryUrl = "http//api.spotify.com/v1/search?=" + params;
-        return this.http.request(queryUrl).map(function (res) { return res.json(); });
-    };
     return SpotifyServiceProvider;
 }());
 SpotifyServiceProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
 ], SpotifyServiceProvider);
 
-var _a;
 //# sourceMappingURL=spotify-service.js.map
 
 /***/ }),

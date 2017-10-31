@@ -2,5 +2,5 @@
 
 <ion-item class="ionInput">
   <ion-label stacked >{{text}}</ion-label>
-  <ion-input type="text" (keyup)="onKey($event)"></ion-input>
+  <ion-input type="text" [value] = "query" (keydown.enter) = "submit(newQuery.value )"></ion-input>
 </ion-item>
